@@ -25,7 +25,7 @@ public class Product {
     private String model;
     private LocalDateTime registered_date = LocalDateTime.now();
 
-    
+
     @ManyToMany
     @JoinTable(name = "product_employee", joinColumns = @JoinColumn(name = "product_id"),
     inverseJoinColumns = @JoinColumn(name = "employee_id"))
