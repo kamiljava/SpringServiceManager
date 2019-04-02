@@ -25,9 +25,17 @@ public class Product {
     private String model;
     private LocalDateTime registered_date = LocalDateTime.now();
 
+    
+    @ManyToMany
+    @JoinTable(name = "product_employee", joinColumns = @JoinColumn(name = "product_id"),
+    inverseJoinColumns = @JoinColumn(name = "employee_id"))
+    private Set <Employee> employees = new HashSet<>();
 
-  // @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER, mappedBy = "product")
-  // private Set<Employee> employees = new HashSet<>();
+    @ManyToMany
+    @JoinTable(name = "product_status",
+            joinColumns = @JoinColumn(name ="product_id"),
+            inverseJoinColumns = @JoinColumn(name = "repair_status_id"))
+    private Set<RepairStatus> repairStatuses = new HashSet<>();
 
 
 
