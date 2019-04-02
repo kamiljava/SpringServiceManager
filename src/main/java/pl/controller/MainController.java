@@ -14,9 +14,5 @@ public class MainController {
     @Autowired
     MainService mainService;
 
-   // @GetMapping("/")
-   // public String home(){
-   //     return "Service Manager";
-   // }
 
 }

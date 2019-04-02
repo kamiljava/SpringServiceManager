@@ -25,11 +25,11 @@ public class EmployeeService {
         Employee employee = new Employee();
         employee.setLogin(employeeDto.getLogin());
         employee.setPassword(employeeDto.getPassword());
-        
+
         String encodedPassword = new BCryptPasswordEncoder().encode(employeeDto.getPassword());
         employee.setPassword(encodedPassword);
 
-
+        employee.addRole(roleRepository.getOne((long)3));
         return employeeRepository.save(employee);
     }
 }

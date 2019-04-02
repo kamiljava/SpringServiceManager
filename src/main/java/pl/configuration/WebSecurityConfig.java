@@ -40,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // adres formularza logowania
                 .loginPage("/login")
                 // nazwa pola w formularzu dot. loginu
-                .usernameParameter("email")
+                .usernameParameter("login")
                 // nazwa pola w formularzu dot. hasła
                 .passwordParameter("password")
                 // adres gdzie przekazywane są parametry formularza
@@ -48,7 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // domyśly URL po poprawnym zalogowaniu
                 .defaultSuccessUrl("/")
                 // domyśly URL po błędnym logowaniu
-                .failureUrl("/errorLogin")
+                .failureUrl("/errorPage")
                 .and()
                 .logout()
                 .logoutUrl("/logout")
@@ -59,10 +59,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
                 auth
                 .jdbcAuthentication()
-                // SQL dla logowania użytkownika po adresie email i haśle
-                .usersByUsernameQuery("SELECT u.email, u.password, u.active FROM user u WHERE u.email = ?")
+                // SQL dla logowania użytkownika po adresie login i haśle
+                        .usersByUsernameQuery("SELECT e.login, e.password, e.active FROM employee e WHERE e.login = ?")
                 // SQL dla przypisania uprawnień dla zalogowanego użytkownika
-                .authoritiesByUsernameQuery("SELECT u.email, r.role FROM user u JOIN user_role ur ON ur.user_id = u.id JOIN role r ON ur.role_id = r.id WHERE u.email = ?")
+                .authoritiesByUsernameQuery("SELECT e.login, r.role FROM employee e JOIN employee_role er ON er.user_id = e.id JOIN role r ON er.role_id = r.id WHERE e.login = ?")
                 // wynik logowania
                 .dataSource(dataSource)
                 // szyfrowanie hasła

@@ -1,6 +1,7 @@
 package pl.model;
 
 import lombok.Data;
+import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -22,12 +23,16 @@ public class Employee {
     //@Pattern(regexp = "([A-Z]+.*[0-9]+|[0-9]+.*[A-Z])")
     @NotNull
     private String password;
+    private Boolean active = true;
 
 
     @ManyToMany
     @JoinTable(name = "employee_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
+    public void addRole(Role role){
+        this.roles.add(role);
+    }
 
 
 }
