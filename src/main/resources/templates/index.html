@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th=”http://www.thymeleaf.org” xmlns:pth="http://www.w3.org/1999/html">
+<html xmlns:th=”http://www.thymeleaf.org”>
 
 <head>
     <!-- Required meta tags-->
@@ -46,7 +46,7 @@
                 <nav class="navbar-sidebar ">
                     <ul class="list-unstyled navbar__list ">
                                <li>
-                                    <a href="index.html">Strona startowa</a>
+                                    <a th:href="@{/}">Strona startowa</a>
                                 </li>
                         <li>
                                     <a href="loginForm.html">Rejestracja</a>
@@ -76,8 +76,11 @@
                                     <a href="loginForm.html">Naprawione</a>
                                 </li>
                                 <li>
-                                    <a href="registerForm.html">Dodanie pracownika</a>
-                                </li> 
+                                    <a th:href="@{/register}">Dodanie pracownika</a>
+                                </li>
+                        <li>
+                            <a th:href="@{/login}">Logowanie</a>
+                        </li>
                             </ul>
                     </ul>
                 </nav>
