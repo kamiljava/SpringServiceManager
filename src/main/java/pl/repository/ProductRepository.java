@@ -8,5 +8,6 @@ import pl.model.Product;
 @Repository
 public interface ProductRepository extends JpaRepository<Product,Long> {
 
+       // Product findBySerial_number(String serial_number);
 
 }

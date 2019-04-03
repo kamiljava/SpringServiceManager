@@ -14,9 +14,9 @@ public class RepairStatus {
     @Id
     @GeneratedValue
     private Long id;
-    @Enumerated
-    private Status status;
-    @Type(type = "text")
-    private String comment;
-    private LocalDateTime status_update = LocalDateTime.now();
+
+    private String status;
+//    @Type(type = "text")
+//    private String comment;
+//    private LocalDateTime status_update = LocalDateTime.now();
 }

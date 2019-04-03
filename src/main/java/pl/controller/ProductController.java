@@ -49,5 +49,13 @@ public class ProductController {
                             productService.addProduct(productDto);
                             return "redirect:/";
     }
+    @GetMapping("/diagnostic")
+    public String diagnostic(Model model, Authentication auth) {
+        List<Status> statusEnum = new ArrayList<>(Arrays.asList(Status.values()));
+        model.addAttribute("product", new ProductDto());
+        model.addAttribute("auth", auth);
+        model.addAttribute("status", statusEnum);
+        return "diagnosticForm";
+    }
 
 }
