@@ -16,7 +16,7 @@ public class RepairStatus {
     private Long id;
 
     private String status;
-//    @Type(type = "text")
-//    private String comment;
-//    private LocalDateTime status_update = LocalDateTime.now();
+    @Type(type = "text")
+    private String comment;
+   private LocalDateTime status_update = LocalDateTime.now();
 }

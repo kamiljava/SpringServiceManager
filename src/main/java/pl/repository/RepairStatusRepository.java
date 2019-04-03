@@ -9,4 +9,5 @@ import pl.model.Role;
 @Repository
 public interface RepairStatusRepository extends JpaRepository<RepairStatus,Long> {
 
+
 }
