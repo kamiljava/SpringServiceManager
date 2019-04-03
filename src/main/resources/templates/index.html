@@ -97,18 +97,10 @@
                         <div class="header-wrap float-right ">
                             <h3 th:if="${auth == null}" >Name</h3>
                             <h3 th:if="${auth != null}" th:text="${login}">Login</h3>
-                            <div class="header-button">
-                                <div class="account-wrap">
-                                    <div class="account-item clearfix js-item-menu">
-                                        <div class="content">
                                              <div class="account-dropdown__footer">
-                                                <a href="#">
-                                                    <i class="zmdi zmdi-power"></i>Logout</a>
+                                                <a th:if="${auth != null}"th:href="@{/logout}">
+                                                    <i class="zmdi zmdi-power" ></i>Logout</a>
                                             </div>
-                                        </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </header>
