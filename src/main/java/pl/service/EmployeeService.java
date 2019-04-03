@@ -1,8 +1,11 @@
 package pl.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import pl.model.Employee;
 import pl.model.Role;
 import pl.model.dto.EmployeeDto;
@@ -31,5 +34,10 @@ public class EmployeeService {
 
         employee.addRole(roleRepository.getOne((long)3));
         return employeeRepository.save(employee);
+    }
+    public String getEmployeeById(Authentication auth){
+        UserDetails principal = (UserDetails) auth.getPrincipal();
+        String login = principal.getUsername();
+        return employeeRepository.findByLogin(login).getLogin();
     }
 }

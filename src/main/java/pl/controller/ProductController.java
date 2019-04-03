@@ -8,11 +8,15 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import pl.model.Status;
 import pl.model.dto.EmployeeDto;
 import pl.model.dto.ProductDto;
 import pl.service.ProductService;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Controller
 public class ProductController {
@@ -27,8 +31,10 @@ public class ProductController {
 
     @GetMapping("/productregister")
     public String productRegister(Model model, Authentication auth){
+        List<Status> statusEnum = new ArrayList<>(Arrays.asList(Status.values()));
         model.addAttribute("product", new ProductDto());
         model.addAttribute("auth", auth);
+        model.addAttribute("status",statusEnum);
         return "productRegisterForm";
     }
     @PostMapping("/productregister")
@@ -43,6 +49,5 @@ public class ProductController {
                             productService.addProduct(productDto);
                             return "redirect:/";
     }
-
 
 }

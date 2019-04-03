@@ -1,6 +1,7 @@
 package pl.model;
 
 import lombok.Data;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -23,6 +24,7 @@ public class Product {
     private String type;
     @NotNull
     private String model;
+
     private LocalDateTime registered_date = LocalDateTime.now();
 
 

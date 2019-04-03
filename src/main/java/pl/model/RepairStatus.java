@@ -5,7 +5,6 @@ import lombok.Data;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Data
@@ -17,10 +16,7 @@ public class RepairStatus {
     private Long id;
     @Enumerated
     private Status status;
-    @NotNull
     @Type(type = "text")
     private String comment;
     private LocalDateTime status_update = LocalDateTime.now();
-
-
 }

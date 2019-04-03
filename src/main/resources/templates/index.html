@@ -49,7 +49,7 @@
                                     <a th:href="@{/}">Strona startowa</a>
                                 </li>
                         <li>
-                                    <a href="loginForm.html">Rejestracja</a>
+                                    <a th:href="@{/productregister}">Rejestracja</a>
                                 </li>
                         <li>
                                     <a href="loginForm.html">Diagnoza</a>
@@ -95,7 +95,8 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap float-right ">
-                            <h3>Name</h3>
+                            <h3 th:if="${auth == null}" >Name</h3>
+                            <h3 th:if="${auth != null}" th:text="${login}">Login</h3>
                             <div class="header-button">
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">

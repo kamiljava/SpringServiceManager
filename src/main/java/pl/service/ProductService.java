@@ -26,6 +26,8 @@ public class ProductService {
       product.setType(productDto.getType());
       product.setModel(productDto.getModel());
 
+
+
       //product.addRepairStatus(repairStatusRepository.getOne((long)1));
       return productRepository.save(product);
     }

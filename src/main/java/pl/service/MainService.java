@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import pl.model.Employee;
 import pl.repository.EmployeeRepository;
 
+import java.util.List;
+
 @Service
 public class MainService {
 
@@ -17,6 +19,13 @@ public class MainService {
 
     public Employee loginEmployee(String login,String password){
         return employeeRepository.findByLoginAndPassword(login,password);
+    }
+    public List<Employee> getAllEmployee(){
+        return employeeRepository.findAll();
+    }
+
+    public Employee getEmployeeByLogin(String login){
+        return employeeRepository.findByLogin(login);
     }
 
 }
