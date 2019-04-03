@@ -24,6 +24,7 @@ public class Product {
     private String type;
     @NotNull
     private String model;
+    private String comment;
 
     private LocalDateTime registered_date = LocalDateTime.now();
 
@@ -45,16 +46,6 @@ public class Product {
     }
 
     public Product() {
-    }
-
-    public Product(@NotNull String serial_number, @NotNull String customer, @NotNull String type, @NotNull String model, LocalDateTime registered_date, Set<Employee> employees, Set<RepairStatus> repairStatuses) {
-        this.serial_number = serial_number;
-        this.customer = customer;
-        this.type = type;
-        this.model = model;
-        this.registered_date = registered_date;
-        this.employees = employees;
-        this.repairStatuses = repairStatuses;
     }
 
     public Long getId() {
@@ -97,6 +88,14 @@ public class Product {
         this.model = model;
     }
 
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
     public LocalDateTime getRegistered_date() {
         return registered_date;
     }
@@ -120,6 +119,18 @@ public class Product {
     public void setRepairStatuses(Set<RepairStatus> repairStatuses) {
         this.repairStatuses = repairStatuses;
     }
+
+    public Product(@NotNull String serial_number, @NotNull String customer, @NotNull String type, @NotNull String model, String comment, LocalDateTime registered_date, Set<Employee> employees, Set<RepairStatus> repairStatuses) {
+        this.serial_number = serial_number;
+        this.customer = customer;
+        this.type = type;
+        this.model = model;
+        this.comment = comment;
+        this.registered_date = registered_date;
+        this.employees = employees;
+        this.repairStatuses = repairStatuses;
+    }
+
 }
 
 

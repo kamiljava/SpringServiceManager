@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.model.Employee;
 import pl.model.Product;
+import pl.model.dto.EmployeeDto;
 import pl.model.dto.ProductDto;
 import pl.repository.EmployeeRepository;
 import pl.repository.ProductRepository;
@@ -24,18 +25,27 @@ public class ProductService {
     }
 
     public Product addProduct(ProductDto productDto){
-      //Employee employee = employeeRepository.findByLogin(login);
       Product product = new Product();
       product.setSerial_number(productDto.getSerial_number());
       product.setCustomer(productDto.getCustomer());
       product.setType(productDto.getType());
       product.setModel(productDto.getModel());
-      //employee.getLogin();
 
       product.addRepairStatus(repairStatusRepository.getOne((long)1));
-        System.out.println("mmmmmm"+product);
-      Product product1 =  productRepository.save(product);
-        System.out.println(product1);
-      return product1;
+
+      Product productSave =  productRepository.save(product);
+      return productSave;
     }
+
+
+//        public Product diagnosisProduct(Product product, String serial_number){
+//        Product statusUpdate = productRepository.findBySerial_number(serial_number);
+//        statusUpdate.setRepairStatuses(product.getRepairStatuses());
+//        statusUpdate.setComment(statusUpdate.getComment());
+//        //statusUpdate.setComment(product.getComment());
+//        return productRepository.save(statusUpdate);
+//    }
+//    public Product getProductBySerialNumber(String serial_number){
+//       return productRepository.findBySerial_number(serial_number);
+//    }
 }

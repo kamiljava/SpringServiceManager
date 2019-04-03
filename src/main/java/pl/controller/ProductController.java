@@ -7,7 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import pl.model.Product;
 import pl.model.Status;
 import pl.model.dto.EmployeeDto;
 import pl.model.dto.ProductDto;
@@ -54,8 +56,15 @@ public class ProductController {
         List<Status> statusEnum = new ArrayList<>(Arrays.asList(Status.values()));
         model.addAttribute("product", new ProductDto());
         model.addAttribute("auth", auth);
-        model.addAttribute("status", statusEnum);
         return "diagnosticForm";
     }
+
+//        @GetMapping("/diagnostic/{serialnumber}")
+//    public String updateStatus(@PathVariable("serialnumber") String serial_number,Model model, Authentication auth){
+//        productService.getProductBySerialNumber(serial_number);
+//        model.addAttribute("serialnumber", serial_number);
+//        model.addAttribute("auth",auth);
+//        return "redirect:/diagnostic";
+//    }
 
 }
