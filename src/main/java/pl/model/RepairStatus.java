@@ -14,3 +14,4 @@ public class RepairStatus {
     private Long id;
     private String status;
 }
+

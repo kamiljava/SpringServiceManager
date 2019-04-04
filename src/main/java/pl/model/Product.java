@@ -6,8 +6,7 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 
 @Entity
@@ -32,25 +31,25 @@ public class Product {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "product_employee", joinColumns = @JoinColumn(name = "product_id"),
-    inverseJoinColumns = @JoinColumn(name = "employee_id"))
-    private Set <Employee> employees = new HashSet<>();
+            inverseJoinColumns = @JoinColumn(name = "employee_id"))
+    private Set<Employee> employees = new HashSet<>();
 
     @ManyToMany
     @JoinTable(name = "product_status",
-            joinColumns = @JoinColumn(name ="product_id"),
+            joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "repair_status_id"))
-    private Set<RepairStatus> repairStatuses = new HashSet<>();
-
-
+    private List<RepairStatus> repairStatuses = new ArrayList<>();
 
     public void addRepairStatus(RepairStatus repairStatus) {
-
-
         this.repairStatuses.add(repairStatus);
     }
 
     public Product() {
     }
+
+//    public String getStatus(){
+//        this.repairStatuses.get()
+//    }
 
     public Long getId() {
         return id;
@@ -116,15 +115,15 @@ public class Product {
         this.employees = employees;
     }
 
-    public Set<RepairStatus> getRepairStatuses() {
+    public List<RepairStatus> getRepairStatuses() {
         return repairStatuses;
     }
 
-    public void setRepairStatuses(Set<RepairStatus> repairStatuses) {
+    public void setRepairStatuses(List<RepairStatus> repairStatuses) {
         this.repairStatuses = repairStatuses;
     }
 
-    public Product(@NotNull String serial_number, @NotNull String customer, @NotNull String type, @NotNull String model, String comment, LocalDateTime registered_date, Set<Employee> employees, Set<RepairStatus> repairStatuses) {
+    public Product(@NotNull String serial_number, @NotNull String customer, @NotNull String type, @NotNull String model, String comment, LocalDateTime registered_date, Set<Employee> employees, List<RepairStatus> repairStatuses) {
         this.serial_number = serial_number;
         this.customer = customer;
         this.type = type;
@@ -134,7 +133,6 @@ public class Product {
         this.employees = employees;
         this.repairStatuses = repairStatuses;
     }
-
 }
 
 

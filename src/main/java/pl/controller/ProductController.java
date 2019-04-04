@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.model.Product;
+import pl.model.RepairStatus;
 import pl.model.dto.ProductDto;
 import pl.service.ProductService;
 
@@ -68,7 +69,12 @@ public class ProductController {
     @GetMapping("/tableinrepair")
     public String tableInRepair(Model model){
         List<Product> products = productService.getAllProduct();
+        List<RepairStatus> repairStatuses = productService.getAllStatus();
+        String status = repairStatuses.get(repairStatuses.size()-1).getStatus();
+
         model.addAttribute("product", products);
+        model.addAttribute("repairstatus", repairStatuses);
+        model.addAttribute("status", status);
         return "tableInRepairForm";
     }
 }

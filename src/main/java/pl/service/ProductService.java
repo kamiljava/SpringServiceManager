@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.model.Employee;
 import pl.model.Product;
+import pl.model.RepairStatus;
 import pl.model.dto.EmployeeDto;
 import pl.model.dto.ProductDto;
 import pl.repository.EmployeeRepository;
@@ -47,7 +48,15 @@ public class ProductService {
                .sorted(Comparator.comparing(Product::getRegistered_date).reversed())
                .collect(Collectors.toList());
     }
+    public List<RepairStatus> getAllStatus(){
+        return repairStatusRepository.findAll();
+    }
 
+    public String getCurrentStatus(){
+
+       List<RepairStatus> repairStatuses = getAllStatus();
+               return repairStatuses.get(repairStatuses.size()-1).getStatus();
+    }
 
 
 
