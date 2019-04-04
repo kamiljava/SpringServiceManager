@@ -42,7 +42,10 @@ public class Product {
     private Set<RepairStatus> repairStatuses = new HashSet<>();
 
 
+
     public void addRepairStatus(RepairStatus repairStatus) {
+
+
         this.repairStatuses.add(repairStatus);
     }
 

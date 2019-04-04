@@ -8,12 +8,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import pl.model.Product;
 import pl.model.dto.ProductDto;
 import pl.service.ProductService;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -50,17 +49,13 @@ public class ProductController {
 
 
 
-//    @GetMapping("/diagnostic")
-//    public String diagnostic(Model model, Authentication auth ,String serial_number) {
-//        List<Status> statusEnum = new ArrayList<>(Arrays.asList(Status.values()));
-//        productService.getProductBySerialNumber(serial_number);
-//        //productService.diagnosticProduct();
-//        model.addAttribute("serialnumber", serial_number);
-//        model.addAttribute("product", new ProductDto());
-//        model.addAttribute("auth", auth);
-//        model.addAttribute("status", statusEnum);
-//        return "diagnosticForm";
-//    }
+    @GetMapping("/diagnostic")
+    public String diagnostic(Model model, Authentication auth ,String serial_number) {
+        model.addAttribute("serialnumber", serial_number);
+        model.addAttribute("product", new ProductDto());
+        model.addAttribute("auth", auth);
+        return "diagnosticForm";
+    }
 
 //        @GetMapping("/diagnostic/{serialnumber}")
 //    public String updateStatus(@PathVariable("serialnumber") String serial_number,Model model, Authentication auth){
@@ -70,4 +65,10 @@ public class ProductController {
 //        return "redirect:/diagnostic";
 //    }
 
+    @GetMapping("/tableinrepair")
+    public String tableInRepair(Model model){
+        List<Product> products = productService.getAllProduct();
+        model.addAttribute("product", products);
+        return "tableInRepairForm";
+    }
 }

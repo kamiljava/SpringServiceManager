@@ -10,6 +10,10 @@ import pl.repository.EmployeeRepository;
 import pl.repository.ProductRepository;
 import pl.repository.RepairStatusRepository;
 
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class ProductService {
 
@@ -36,6 +40,15 @@ public class ProductService {
       Product productSave =  productRepository.save(product);
       return productSave;
     }
+
+    public List<Product> getAllProduct(){
+       return productRepository.findAll()
+               .stream()
+               .sorted(Comparator.comparing(Product::getRegistered_date).reversed())
+               .collect(Collectors.toList());
+    }
+
+
 
 
 //        public Product diagnosticProduct(Product product, String serial_number){
