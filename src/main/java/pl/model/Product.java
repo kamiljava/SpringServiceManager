@@ -47,9 +47,9 @@ public class Product {
     public Product() {
     }
 
-//    public String getStatus(){
-//        this.repairStatuses.get()
-//    }
+    public String getStatus(){
+        return this.repairStatuses.get(repairStatuses.size()-1).getStatus();
+    }
 
     public Long getId() {
         return id;

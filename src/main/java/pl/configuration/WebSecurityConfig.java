@@ -29,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // .hasAnyAuthority("uprawnienie") -> dla określonego uprawnienia
                     .antMatchers("/").hasAnyAuthority("manager", "technician","tester","warehouseman")
                     .antMatchers("/diagnostic").hasAnyAuthority("manager", "technician","tester","warehouseman")
-                    .antMatchers("/tableinrepair").hasAnyAuthority("manager", "technician","tester","warehouseman")
+                    .antMatchers("/tableAllProducts").hasAnyAuthority("manager", "technician","tester","warehouseman")
                     .antMatchers("/productregister").hasAnyAuthority("manager", "technician","tester","warehouseman")
                     .antMatchers("/register").hasAnyAuthority("manager", "technician","tester","warehouseman")
                 // pozostałe URL udostępnij dla każdego

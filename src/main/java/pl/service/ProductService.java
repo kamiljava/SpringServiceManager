@@ -51,15 +51,7 @@ public class ProductService {
     public List<RepairStatus> getAllStatus(){
         return repairStatusRepository.findAll();
     }
-
-    public String getCurrentStatus(){
-
-       List<RepairStatus> repairStatuses = getAllStatus();
-               return repairStatuses.get(repairStatuses.size()-1).getStatus();
-    }
-
-
-
+    
 //        public Product diagnosticProduct(Product product, String serial_number){
 //        Product statusUpdate = productRepository.findBySerial_number(serial_number);
 //        statusUpdate.setRepairStatuses(product.getRepairStatuses());

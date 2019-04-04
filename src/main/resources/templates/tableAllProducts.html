@@ -45,39 +45,39 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar ">
                     <ul class="list-unstyled navbar__list ">
-                               <li>
-                                    <a th:href="@{/}">Strona startowa</a>
-                                </li>
                         <li>
-                                    <a href="productRegisterForm.html">Rejestracja</a>
-                                </li>
+                            <a th:href="@{/}">Strona startowa</a>
+                        </li>
                         <li>
-                                    <a href="loginForm.html">Diagnoza</a>
-                                </li>
+                            <a th:href="@{/productregister}">Rejestracja</a>
+                        </li>
                         <li>
-                                    <a href="loginForm.html">Naprawa</a>
-                                </li>
+                            <a th:href="@{/diagnostic}">Diagnoza</a>
+                        </li>
                         <li>
-                                    <a href="loginForm.html">Testowanie</a>
-                                </li>
+                            <a th:href="@{/}">Naprawa</a>
+                        </li>
                         <li>
-                                    <a href="loginForm.html">Wysyłka</a>
-                                </li>
+                            <a th:href="@{/}">Testowanie</a>
+                        </li>
                         <li>
-                                    <a href="loginForm.html">Wykresy</a>
-                                </li>
+                            <a th:href="@{/}">Wysyłka</a>
+                        </li>
                         <li>
-                                    <a href="loginForm.html">Aktualnie w naprawie</a>
-                                </li>
-                         <li>
-                                    <a href="loginForm.html">Priorytety</a>
-                                </li>
-                         <li>
-                                    <a href="loginForm.html">Naprawione</a>
-                                </li>
-                                <li>
-                                    <a th:href="@{/register}">Dodanie pracownika</a>
-                                </li>
+                            <a th:href="@{/}">Wykresy</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/tableAllProducts}">Aktualnie w naprawie</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/}">Priorytety</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/}">Naprawione</a>
+                        </li>
+                        <li>
+                            <a th:href="@{/register}">Dodanie pracownika</a>
+                        </li>
                         <li>
                             <a th:href="@{/login}">Logowanie</a>
                         </li>
@@ -95,21 +95,14 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap float-right ">
-                            <h3>Name</h3>
-                            <div class="header-button">
-                                <div class="account-wrap">
-                                    <div class="account-item clearfix js-item-menu">
-                                        <div class="content">
-                                             <div class="account-dropdown__footer">
-                                                <a href="#">
-                                                    <i class="zmdi zmdi-power"></i>Logout</a>
-                                            </div>
-                                        </div>
-                                </div>
+                            <h3 th:if="${auth == null}" >Name</h3>
+                            <h3 th:if="${auth != null}" th:text="${login}">Login</h3>
+                            <div class="account-dropdown__footer">
+                                <a th:if="${auth != null}"th:href="@{/logout}">
+                                    <i class="zmdi zmdi-power" ></i>Logout</a>
                             </div>
                         </div>
                     </div>
-                </div>
             </header>
             <!-- HEADER DESKTOP-->
 
@@ -136,7 +129,7 @@
                                     <td th:text="${p.getCustomer()}">iPhone X 64Gb Grey</td>
                                     <td th:text="${p.getType()}">Processed</td>
                                     <td th:text="${p.getModel()}">$999.00</td>
-                                    <td th:text="${p.getRepairStatuses() + ' '}"class="process" >Diagnozowanie</td>
+                                    <td th:text="${p.getStatus() + ' '}"class="process" >Diagnozowanie</td>
                                 </tr>
                                 </tbody>
                             </table>
