@@ -130,7 +130,7 @@
                                     <strong>Wprowadź dane</strong>
                                 </div>
                                 <div class="card-body card-block">
-                                    <form th:action="@{/productregister}" th:method="post" th:object="${product}" class="form-horizontal">
+                                    <form th:action="@{/diagnostic}"  th:object="${product}" class="form-horizontal">
                                         <div class="row form-group">
                                             <div class="col col-md-3">
                                                 <label for="hf-email" class=" form-control-label">Numer seryjny</label>
@@ -139,11 +139,6 @@
                                                 <input th:field="*{serial_number}" type="text" id="hf-email" name="hf-email" class="form-control">
                                                 <span class="help-block">Podaj numer seryjny</span>
                                             </div>
-                                        </div>
-                                        <div class="card-footer">
-                                            <button type="submit" class="btn btn-success btn-block ">
-                                                <i class="fa fa-dot-circle-o"></i> Zatwierdź
-                                            </button>
                                         </div>
                                         <div class="row form-group">
                                             <div class="col col-md-3">

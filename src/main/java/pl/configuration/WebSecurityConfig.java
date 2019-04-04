@@ -25,12 +25,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
                 http.authorizeRequests()
                 // tutaj są URL wymagające autoryzacji - strefa chroniona
-                // .antMatchers(/url) -> wymaga autoryzacji
+                        //   .antMatchers(/url) -> wymaga autoryzacji
                 // .hasAnyAuthority("uprawnienie") -> dla określonego uprawnienia
-               // .antMatchers("/deletepost/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
-               // .antMatchers("/updatepost/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
-               // .antMatchers("/addpost/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
-              //  .antMatchers("/admin").hasAnyAuthority("ROLE_ADMIN")
+                    .antMatchers("/").hasAnyAuthority("manager", "technician","tester","warehouseman")
                 // pozostałe URL udostępnij dla każdego
                 .anyRequest().permitAll()
                 .and()

@@ -38,11 +38,11 @@ public class ProductService {
     }
 
 
-//        public Product diagnosisProduct(Product product, String serial_number){
+//        public Product diagnosticProduct(Product product, String serial_number){
 //        Product statusUpdate = productRepository.findBySerial_number(serial_number);
 //        statusUpdate.setRepairStatuses(product.getRepairStatuses());
 //        statusUpdate.setComment(statusUpdate.getComment());
-//        //statusUpdate.setComment(product.getComment());
+//        statusUpdate.addRepairStatus(repairStatusRepository.getOne((long)2));
 //        return productRepository.save(statusUpdate);
 //    }
 //    public Product getProductBySerialNumber(String serial_number){

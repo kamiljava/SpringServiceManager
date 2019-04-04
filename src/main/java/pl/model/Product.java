@@ -24,6 +24,7 @@ public class Product {
     private String type;
     @NotNull
     private String model;
+    @Type(type = "text")
     private String comment;
 
     private LocalDateTime registered_date = LocalDateTime.now();
